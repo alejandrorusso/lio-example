@@ -16,14 +16,14 @@ double lnumber =
         return (n + n)
 
 -- | A default secret
-defaultVal :: HLIO (Labeled HL Int)
-defaultVal = label High (0 :: Int)
+defaultVal :: HL -> HLIO (Labeled HL Int)
+defaultVal l = label l (0 :: Int)
 
 -- | Dispatch on the /label/ of the input without observing its contents
 testDispatch :: Labeled HL Int -> HLIO (Labeled HL Int)
 testDispatch lint
     | labelOf lint == Low = double lint
-    | labelOf lint == High = defaultVal
+    | labelOf lint == High = defaultVal High
 
 -- | Apply 'testDispatch' to every element of a list
 applyList :: [Labeled HL Int] -> HLIO [Labeled HL Int]
