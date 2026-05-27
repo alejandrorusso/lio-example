@@ -1,0 +1,32 @@
+cabal-version:      2.4
+name:               lio-example
+version:            0.1.0.0
+synopsis:           Example project using the LIO information-flow control library
+description:
+    A small example demonstrating how to use the Labeled IO (LIO) library
+    with DCLabels to perform information-flow controlled computations.
+license:            BSD-3-Clause
+author:             Alejandro Russo
+maintainer:         alejandro.russo@gmail.com
+build-type:         Simple
+extra-source-files: README.md
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:  Example
+    build-depends:    base       ^>=4.21,
+                      lio        >=0.11   && <0.12
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+executable lio-example
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:    base         ^>=4.21,
+                      lio          >=0.11   && <0.12,
+                      lio-example
+    hs-source-dirs:   app
+    default-language: Haskell2010
