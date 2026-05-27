@@ -1,0 +1,28 @@
+cabal-version:      2.4
+name:               lio
+version:            0.1.3
+synopsis:           Labeled IO (LIO) — legacy 0.1.3 core, vendored and ported to GHC 9.12
+description:
+    A trimmed, vendored copy of the original @lio-0.1.3@ release, kept because
+    it is the most recent LIO release that still provides 'toLabeled' /
+    'toLabeledP' (removed in the 0.9.0.0 rewrite). Only the core modules
+    required for the labeled-IO monad are included; the @LIO.FS@, @LIO.Handle@,
+    @LIO.DCLabel@, @LIO.LIORef@ and @LIO.Concurrent@ modules (which depended on
+    @cereal <0.4@, @SHA@, @unix@ and @old-time@) are intentionally omitted.
+    Source adapted to compile with GHC 9.12 / base 4.21.
+license:            GPL-2.0-only
+author:             Hails team (original); vendored locally
+maintainer:         alejandro.russo@gmail.com
+build-type:         Simple
+
+library
+    exposed-modules:  LIO
+                      LIO.Safe
+                      LIO.TCB
+                      LIO.MonadCatch
+                      LIO.MonadLIO
+    build-depends:    base >=4.21 && <5,
+                      mtl  >=2.3  && <2.4
+    hs-source-dirs:   src
+    default-language: Haskell2010
+    ghc-options:      -Wno-deprecations

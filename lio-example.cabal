@@ -16,9 +16,10 @@ common warnings
 
 library
     import:           warnings
-    exposed-modules:  Example
+    exposed-modules:  HighLow
+                      HighLowExample
     build-depends:    base       ^>=4.21,
-                      lio        >=0.11   && <0.12
+                      lio        ==0.1.3
     hs-source-dirs:   src
     default-language: Haskell2010
 
@@ -26,7 +27,7 @@ executable lio-example
     import:           warnings
     main-is:          Main.hs
     build-depends:    base         ^>=4.21,
-                      lio          >=0.11   && <0.12,
+                      lio          ==0.1.3,
                       lio-example
     hs-source-dirs:   app
     default-language: Haskell2010
